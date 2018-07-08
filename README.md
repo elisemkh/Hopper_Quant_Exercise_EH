@@ -1,6 +1,6 @@
 # Hopper Quantitative Exercise
 
-## Findings and Issues to tackle in Production
+## Summary of Findings and Future Work
 An accuracy of 94.8% was achieved on the test data with a Random Forest Classifier when predicting between three categories, "Wait", "Wait or Buy", and "Buy". This accuracy was improved to 96.3% when reducing the categories to "Wait" or "Buy". PCA was performed on the train data, but the accuracy went down when it was used to train the RF model. Future work could include improving the process of data preparation by experimenting with the numerical or categorical treatment of the dates in the features, and by experimenting with methods other than one hot encoding for the treatment of categorical variables. There are also ways to improve random forest algorithms like using XGBoost.
 
 ## Methodology
