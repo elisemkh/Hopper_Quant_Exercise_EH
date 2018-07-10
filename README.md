@@ -1,7 +1,7 @@
 # Hopper Quantitative Exercise
 
 ## Summary of Findings and Future Work
-An accuracy of 94.8% was achieved on the test data with a Random Forest Classifier when predicting between three recommendation categories: "Wait", "Wait or Buy", and "Buy". This accuracy was improved to 96.3% when reducing the categories to "Wait" or "Buy". PCA was performed on the train data, but the accuracy went down when it was used to train the RF model. Future work could include improving the process of data preparation by experimenting with the numerical or categorical treatment of the dates in the features, and by experimenting with methods other than one hot encoding for the treatment of categorical variables. There are also ways to improve random forest algorithms like using XGBoost.
+An F1 score of 94.6% and accuracy of 94.8% were achieved on the test data with a Random Forest Classifier when predicting between three recommendation categories: "Wait", "Wait or Buy", and "Buy". This accuracy was improved to 96.3% when reducing the categories to "Wait" or "Buy", but the F1 score went down to 91.4%. PCA was performed on the train data, but the accuracy went down when it was used to train the RF model. Future work could include improving the process of data preparation by experimenting with the numerical or categorical treatment of the dates in the features, and by experimenting with methods other than one hot encoding for the treatment of categorical variables. There are also ways to improve random forest algorithms, like using XGBoost.
 
 More details can be found in the ipython notebooks.
 
@@ -31,11 +31,11 @@ I applied the PCA and then plotted the explained variance vs. the number of comp
 
 ### RF Classifier.ipynd
 
-#### Establishing a Baseline Accuracy:
-I established a baseline accuracy by randomly picking labels from the train labels for the test labels. I did this because there is some class imbalance- the most common recommendation is "Wait", so I didn't want to randomly assign all three labels equally. The accuracy was 61.9%.
+#### Establishing a Baseline F1 score and Accuracy:
+I established a baseline F1 score and accuracy by randomly picking labels from the train labels for the test labels. I did this because there is some class imbalance- the most common recommendation is "Wait", so I didn't want to randomly assign all three labels equally. The F1 score was 61.5% and the accuracy was 61.9%.
 
 #### Training and Testing the model:
-I trained the random forest model with 1000 trees first on the entire train features set. The accuracy for the test set was 94.8%. This is nearly a 33 point improvement over the baseline accuracy. I plotted a confusion matrix and explored the 15 most important features for the prediction. I also measured the accuracy of the test set if I combined the labels "Wait or Buy" and "Buy" into one label - "Buy". When I did this, my accuracy was improved to 96.3%.
+I trained the random forest model with 1000 trees first on the entire train features set. The F1 score and accuracy for the test set were 94.6% and 94.8% respectively. This is nearly a 33 point improvement over the baseline accuracy. I plotted a confusion matrix and explored the 15 most important features for the prediction. I also measured the accuracy of the test set if I combined the labels "Wait or Buy" and "Buy" into one label - "Buy". When I did this, my accuracy was improved to 96.3% and my F1 score dropped to 91.4%.
 
 #### Training and Testing the model with the PCA data:
-I trained and tested the model with 4 different PCA data sets- 52, 34, 29, and 25 components. These numbers of components represent all the features (52), and then retaining 99%, 95%, and 90% of the explained variance respectively. The accuracy went down significantly when I used any of the PCA data. This happens when the collinearity of the data helps the model. More explained variance of a model doesn't necessarily mean that there is more variance between the features with different labels.  
+I trained and tested the model with 4 different PCA data sets- 52, 34, 29, and 25 components. These numbers of components represent all the features (52), and then retaining 99%, 95%, and 90% of the explained variance respectively. The F1 scores and accuracies went down significantly when I used any of the PCA data. This happens when the collinearity of the data helps the model. More explained variance of a model doesn't necessarily mean that there is more variance between the features with different labels.  
